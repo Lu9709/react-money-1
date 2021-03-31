@@ -5,14 +5,18 @@ import {TagsSection} from './Money/TagsSection';
 import {CategorySection} from './Money/CategorySection';
 import {NotesSection} from './Money/NotesSection';
 import {NumberPadSection} from './Money/NumberPadSection';
+import styled from 'styled-components';
 
 
-
+const MyLayout =styled(Layout)`
+  display: flex;
+  flex-direction: column;
+`
 
 
 function Money() {
   return (
-    <Layout>
+    <MyLayout>
       <TagsSection>
         <ol>
           <li>衣</li>
@@ -55,7 +59,7 @@ function Money() {
           <button className="dot">.</button>
         </div>
       </NumberPadSection>
-    </Layout>
+    </MyLayout>
   );
 }
 export default Money
