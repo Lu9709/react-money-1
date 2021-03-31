@@ -26,18 +26,17 @@ const Wrapper = styled.section`
 `;
 const NoteSection: React.FC = () => {
   const [note, setNote] = useState('');
-  const refInput = useRef<HTMLInputElement>(null)
-  const getNote = ()=>{
-    if(refInput.current !==null){
-      setNote(refInput.current.value)
+  const refInput = useRef<HTMLInputElement>(null);
+  const getNote = () => {
+    if (refInput.current !== null) {
+      setNote(refInput.current.value);
     }
-    console.log(note);
-  }
+  };
   return (
     <Wrapper>
       <label>
         <span>备注</span>
-        <input type="text" placeholder="在这里添加备注" ref={refInput} defaultValue={note} onBlur={getNote}/>
+        <input type="text" placeholder="在这里添加备注" defaultValue={note} onBlur={getNote}/>
       </label>
     </Wrapper>
   );
