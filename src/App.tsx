@@ -1,26 +1,47 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  HashRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom';
+import Nav from './components/Nav';
+import Money from './views/Money';
+import Label from './views/Label';
+import Statistics from './views/Statistics';
+import NoMatch from './views/NoMatch';
+
+import styled from 'styled-components';
+
+const AppWrapper = styled.div`
+  color: #333;
+`;
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper>
+      <Router>
+        <Switch>
+          <Route path="/label">
+            <Label/>
+          </Route>
+          <Route path="/money">
+            <Money/>
+          </Route>
+          <Route path="/statistics">
+            <Statistics/>
+          </Route>
+          <Redirect exact from="/" to="/money"/>
+          <Route path="*">
+            <NoMatch/>
+          </Route>
+        </Switch>
+        <Nav/>
+      </Router>
+    </AppWrapper>
   );
 }
+
 
 export default App;
