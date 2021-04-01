@@ -41,7 +41,6 @@ const CategorySection:React.FC<Props> = (props)=>{
           >{categoryMap[c]}
           </li>
         )}
-
       </ul>
     </Wrapper>
   )
