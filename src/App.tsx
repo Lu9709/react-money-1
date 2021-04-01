@@ -5,7 +5,6 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import Nav from './components/Nav';
 import Money from './views/Money';
 import Label from './views/Label';
 import Statistics from './views/Statistics';
@@ -26,7 +25,7 @@ function App() {
           <Route exact path="/label">
             <Label/>
           </Route>
-          <Route exact path="/label/:label">
+          <Route exact path="/label/:id">
             <Tag/>
           </Route>
           <Route exact path="/money">
@@ -40,7 +39,6 @@ function App() {
             <NoMatch/>
           </Route>
         </Switch>
-        <Nav/>
       </Router>
     </AppWrapper>
   );
