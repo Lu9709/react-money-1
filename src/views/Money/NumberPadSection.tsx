@@ -1,36 +1,38 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {Wrapper} from './NumberPadSection/Wrapper';
 import generateOutput from './NumberPadSection/generateOutput';
 
 type Props = {
-  value:number
-  onChange:(value:number)=>void
-  onOk?:()=>void
+  value: number
+  onChange: (value: number) => void
+  onOk?: () => void
 }
 const NumberPadSection: FC<Props> = (props) => {
-  const output = props.value.toString()
-  const setOutput =(output:string)=>{
-    let value
-    if(output.length>=16){
-      value = parseFloat(output.slice(0,16))
-    }else if(output.length===0){
-      value = 0
-    }else {
-      value = parseFloat(output)
+  // const output = props.value.toString()
+  const [output, _setOutput] = useState(props.value.toString());
+  const setOutput = (output: string) => {
+    let newOutput: string;
+    if (output.length >= 16) {
+      newOutput = output.slice(0, 16);
+    } else if (output.length === 0) {
+      newOutput = '0';
+    } else {
+      newOutput = output;
     }
-    props.onChange(value)
-  }
+    _setOutput(newOutput)
+    props.onChange(parseFloat(newOutput));
+  };
 
   const onclickWrapperNumber = (e: React.MouseEvent) => {
-    const text = (e.target as HTMLButtonElement).textContent
-    if(text=== null){return;}
-    if(text==='OK'){
-      if(props.onOk){
+    const text = (e.target as HTMLButtonElement).textContent;
+    if (text === null) {return;}
+    if (text === 'OK') {
+      if (props.onOk) {
         props.onOk();
       }
     }
-    if('01234567890.'.split('').concat(['删除','清空']).indexOf(text)>=0){
-      setOutput(generateOutput(text,output))
+    if ('01234567890.'.split('').concat(['删除', '清空']).indexOf(text) >= 0) {
+      setOutput(generateOutput(text, output));
     }
   };
 
