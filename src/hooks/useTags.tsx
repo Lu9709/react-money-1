@@ -32,6 +32,10 @@ const useTags = () => {
       setTags([...tags,{id:createId(),name:tagName}])
     }
   }
+  const getName = (id:number)=>{
+    const tag = tags.filter(t=>t.id ===id)[0];
+    return tag ? tag.name:''
+  }
   useEffect(()=>{
     let localTags = JSON.parse(window.localStorage.getItem('tags') ||'[]')
     if(localTags.length === 0){
@@ -47,6 +51,6 @@ const useTags = () => {
   useUpdate(()=>{
       window.localStorage.setItem('tags',JSON.stringify(tags))
   },[tags])
-  return {tags, setTags, findTag,findTagIndex,updateTag,deleteTag,onAddTag};
+  return {tags, setTags, findTag,findTagIndex,updateTag,deleteTag,onAddTag,getName};
 };
 export {useTags};
