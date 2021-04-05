@@ -2,6 +2,7 @@
   "name": "react-money-3",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lu9709.github.io/-react-money-1-website/",
   "dependencies": {
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
