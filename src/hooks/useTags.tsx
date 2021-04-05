@@ -50,7 +50,7 @@ const useTags = () => {
   },[]) //组件挂载时执行
   useUpdate(()=>{
       window.localStorage.setItem('tags',JSON.stringify(tags))
-  },[tags])
+  },tags)
   return {tags, setTags, findTag,findTagIndex,updateTag,deleteTag,onAddTag,getName};
 };
 export {useTags};
